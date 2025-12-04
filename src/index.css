@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* Medical Professional Theme - Teal & Gold */
+    --background: 210 20% 98%;
+    --foreground: 200 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 25% 15%;
+
+    /* Deep teal - professional medical */
+    --primary: 185 45% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Soft sage */
+    --secondary: 180 15% 92%;
+    --secondary-foreground: 200 25% 15%;
+
+    --muted: 200 15% 95%;
+    --muted-foreground: 200 10% 45%;
+
+    /* Warm gold accent */
+    --accent: 38 70% 55%;
+    --accent-foreground: 200 25% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 200 15% 88%;
+    --input: 200 15% 88%;
+    --ring: 185 45% 28%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(185 45% 28%) 0%, hsl(195 40% 22%) 100%);
+    --gold-gradient: linear-gradient(90deg, hsl(38 70% 55%) 0%, hsl(42 75% 60%) 100%);
+    --text-gradient: linear-gradient(135deg, hsl(185 45% 28%) 0%, hsl(38 70% 55%) 100%);
+    --shadow-soft: 0 4px 30px -5px hsl(200 25% 15% / 0.08);
+    --shadow-card: 0 10px 40px -10px hsl(200 25% 15% / 0.12);
+    --shadow-glow: 0 0 60px hsl(185 45% 28% / 0.15);
+
+    /* Typography */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 200 25% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 200 20% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 200 20% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 180 40% 50%;
+    --primary-foreground: 200 25% 8%;
+
+    --secondary: 200 15% 18%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 200 15% 18%;
+    --muted-foreground: 200 10% 60%;
+
+    --accent: 38 70% 55%;
+    --accent-foreground: 200 25% 8%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 200 15% 20%;
+    --input: 200 15% 20%;
+    --ring: 180 40% 50%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .placeholder-text {
+    @apply relative inline-block;
+    background: linear-gradient(90deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .placeholder-text::after {
+    content: '← Edite aqui';
+    @apply absolute -right-2 top-1/2 -translate-y-1/2 translate-x-full text-xs font-normal opacity-60;
+    font-family: var(--font-body);
+    -webkit-text-fill-color: hsl(var(--accent));
+  }
+
+  .placeholder-block {
+    @apply border-2 border-dashed border-accent/40 rounded-lg p-4 bg-accent/5;
+  }
+
+  .section-divider {
+    @apply w-20 h-1 rounded-full;
+    background: var(--gold-gradient);
+  }
+
+  .text-gradient {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-card);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-delay-1 {
+    animation: fadeIn 0.6s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-delay-3 {
+    animation: fadeIn 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
